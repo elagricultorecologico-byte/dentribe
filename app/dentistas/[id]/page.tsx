@@ -88,10 +88,7 @@ export default async function PaginaPerfilDentista({ params }: PropsPagina) {
     <div className="min-h-screen bg-slate-50">
       {/* Navbar mínimo */}
       <nav className="bg-[#0F172A] px-4 py-4">
-        <div className="max-w-5xl mx-auto flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold text-white tracking-tight">
-            denti<span className="text-[#0EA5E9]">tribe</span>
-          </Link>
+        <div className="max-w-5xl mx-auto flex items-center justify-end">
           <Link href="/dentistas" className="text-sm text-slate-400 hover:text-white transition-colors">
             ← Volver al directorio
           </Link>
