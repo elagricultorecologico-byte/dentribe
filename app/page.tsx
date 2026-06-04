@@ -133,9 +133,9 @@ export default function Home() {
               </div>
 
               <h1 className="animate-slide-in-left delay-100 text-4xl md:text-5xl lg:text-6xl font-bold mb-5 leading-[1.1] tracking-tight">
-                Encuentra tu dentista{" "}
+                Tu dentista de confianza,{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0EA5E9] to-[#0D9488]">
-                  en todo el mundo
+                  en cualquier parte del mundo
                 </span>
               </h1>
 
