@@ -147,11 +147,11 @@ export default function Home() {
                 <HeroSearchBar />
               </div>
 
-              <div className="animate-fade-in-up delay-400 mt-5 flex flex-wrap gap-2 text-sm">
+              <div className="animate-fade-in-up delay-400 mt-5 flex gap-2 text-sm w-full">
                 {["Ortodoncia", "Implantes", "Blanqueamiento", "Endodoncia", "Pediatría dental"].map((s) => (
                   <Link key={s} href={`/dentistas?especialidad=${encodeURIComponent(s.toLowerCase())}`}
-                    className="bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40
-                               px-4 py-1.5 transition-all duration-200 hover:scale-105 active:scale-95">
+                    className="flex-1 text-center bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40
+                               px-2 py-1.5 transition-all duration-200 hover:scale-105 active:scale-95">
                     {s}
                   </Link>
                 ))}
