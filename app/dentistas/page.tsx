@@ -203,10 +203,7 @@ export default async function PaginaDentistas({ searchParams }: PropsPagina) {
       {/* Header */}
       <div className="bg-[#0F172A] text-white py-10 px-4">
         <div className="max-w-6xl mx-auto">
-          <Link href="/" className="text-xl font-bold tracking-tight mb-4 inline-block">
-            denti<span className="text-[#0EA5E9]">tribe</span>
-          </Link>
-          <h1 className="text-3xl font-bold mt-2">Directorio de dentistas</h1>
+          <h1 className="text-3xl font-bold">Directorio de dentistas</h1>
           <p className="text-slate-400 mt-1 text-sm">
             {dentistasVisibles.length}{" "}
             {dentistasVisibles.length === 1
