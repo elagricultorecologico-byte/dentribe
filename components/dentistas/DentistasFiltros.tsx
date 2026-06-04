@@ -55,108 +55,98 @@ export default function DentistasFiltros({
     "text-xs font-semibold text-slate-600 uppercase tracking-wide mb-1 block";
 
   return (
-    <div className="bg-white border border-slate-200 p-5 space-y-5">
-      <h2 className="text-sm font-bold text-[#0F172A] uppercase tracking-wide">
+    <div className="bg-white border border-slate-200 p-4 sm:p-5">
+      <h2 className="text-sm font-bold text-[#0F172A] uppercase tracking-wide mb-4">
         Filtrar resultados
       </h2>
 
-      {/* Especialidad */}
-      <div>
-        <label htmlFor="filtro-especialidad" className={claseLabel}>
-          Especialidad
-        </label>
-        <select
-          id="filtro-especialidad"
-          value={especialidad}
-          onChange={(e) => setEspecialidad(e.target.value)}
-          className={claseInput}
-        >
-          <option value="">Todas las especialidades</option>
-          {especialidades.map((esp) => (
-            <option key={esp} value={esp}>
-              {esp}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      {/* País */}
-      <div>
-        <label htmlFor="filtro-pais" className={claseLabel}>
-          País
-        </label>
-        <input
-          id="filtro-pais"
-          type="text"
-          value={pais}
-          onChange={(e) => setPais(e.target.value)}
-          placeholder="España, México..."
-          className={claseInput}
-        />
-      </div>
-
-      {/* Ciudad */}
-      <div>
-        <label htmlFor="filtro-ciudad" className={claseLabel}>
-          Ciudad
-        </label>
-        <input
-          id="filtro-ciudad"
-          type="text"
-          value={ciudad}
-          onChange={(e) => setCiudad(e.target.value)}
-          placeholder="Madrid, Barcelona..."
-          className={claseInput}
-        />
-      </div>
-
-      {/* Valoración mínima */}
-      <div>
-        <span className={claseLabel}>Valoración mínima</span>
-        <div className="flex gap-1 mt-1">
-          {[1, 2, 3, 4, 5].map((estrella) => (
-            <button
-              key={estrella}
-              type="button"
-              onClick={() =>
-                setRatingMinimo(ratingMinimo === estrella ? 0 : estrella)
-              }
-              className={`text-xl leading-none transition-colors ${
-                estrella <= ratingMinimo
-                  ? "text-amber-400"
-                  : "text-slate-200 hover:text-amber-300"
-              }`}
-              aria-label={`${estrella} estrella${estrella > 1 ? "s" : ""} mínimo`}
-            >
-              ★
-            </button>
-          ))}
+      <div className="grid grid-cols-2 lg:grid-cols-1 gap-4">
+        {/* Especialidad */}
+        <div className="col-span-2 lg:col-span-1">
+          <label htmlFor="filtro-especialidad" className={claseLabel}>
+            Especialidad
+          </label>
+          <select
+            id="filtro-especialidad"
+            value={especialidad}
+            onChange={(e) => setEspecialidad(e.target.value)}
+            className={claseInput}
+          >
+            <option value="">Todas</option>
+            {especialidades.map((esp) => (
+              <option key={esp} value={esp}>{esp}</option>
+            ))}
+          </select>
         </div>
-        {ratingMinimo > 0 && (
-          <p className="text-xs text-slate-500 mt-1">
-            {ratingMinimo}+ estrella{ratingMinimo > 1 ? "s" : ""}
-          </p>
-        )}
-      </div>
 
-      {/* Botones */}
-      <div className="space-y-2 pt-2">
-        <button
-          type="button"
-          onClick={aplicarFiltros}
-          disabled={isPending}
-          className="w-full bg-[#0EA5E9] hover:bg-[#0284c7] disabled:bg-slate-300 text-white font-semibold px-4 py-2 text-sm transition-colors"
-        >
-          {isPending ? "Buscando..." : "Aplicar filtros"}
-        </button>
-        <button
-          type="button"
-          onClick={limpiarFiltros}
-          disabled={isPending}
-          className="w-full border border-slate-300 text-slate-700 hover:bg-slate-50 px-4 py-2 text-sm font-semibold transition-colors"
-        >
-          Limpiar filtros
-        </button>
+        {/* País */}
+        <div>
+          <label htmlFor="filtro-pais" className={claseLabel}>País</label>
+          <input
+            id="filtro-pais"
+            type="text"
+            value={pais}
+            onChange={(e) => setPais(e.target.value)}
+            placeholder="España, México..."
+            className={claseInput}
+          />
+        </div>
+
+        {/* Ciudad */}
+        <div>
+          <label htmlFor="filtro-ciudad" className={claseLabel}>Ciudad</label>
+          <input
+            id="filtro-ciudad"
+            type="text"
+            value={ciudad}
+            onChange={(e) => setCiudad(e.target.value)}
+            placeholder="Madrid, París..."
+            className={claseInput}
+          />
+        </div>
+
+        {/* Valoración mínima */}
+        <div className="col-span-2 lg:col-span-1">
+          <span className={claseLabel}>Valoración mínima</span>
+          <div className="flex gap-1 mt-1">
+            {[1, 2, 3, 4, 5].map((estrella) => (
+              <button
+                key={estrella}
+                type="button"
+                onClick={() => setRatingMinimo(ratingMinimo === estrella ? 0 : estrella)}
+                className={`text-2xl leading-none transition-colors ${
+                  estrella <= ratingMinimo ? "text-amber-400" : "text-slate-200 hover:text-amber-300"
+                }`}
+                aria-label={`${estrella} estrella${estrella > 1 ? "s" : ""} mínimo`}
+              >
+                ★
+              </button>
+            ))}
+          </div>
+          {ratingMinimo > 0 && (
+            <p className="text-xs text-slate-500 mt-1">{ratingMinimo}+ estrella{ratingMinimo > 1 ? "s" : ""}</p>
+          )}
+        </div>
+
+        {/* Botones */}
+        <div className="col-span-2 lg:col-span-1 flex gap-2 pt-1">
+          <button
+            type="button"
+            onClick={aplicarFiltros}
+            disabled={isPending}
+            className="flex-1 bg-[#0EA5E9] hover:bg-[#0284c7] disabled:bg-slate-300 text-white font-semibold px-4 py-2 text-sm transition-colors"
+          >
+            {isPending ? "Buscando..." : "Aplicar"}
+          </button>
+          <button
+            type="button"
+            onClick={limpiarFiltros}
+            disabled={isPending}
+            className="flex-1 border border-slate-300 text-slate-700 hover:bg-slate-50 px-4 py-2 text-sm font-semibold transition-colors"
+          >
+            Limpiar
+          </button>
+        </div>
       </div>
     </div>
   );

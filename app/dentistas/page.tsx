@@ -56,20 +56,20 @@ function CardDentista({ dentista }: { dentista: DentistaEnLista }) {
   const extras = especialidades.length - 3;
 
   return (
-    <div className="bg-white border border-slate-200 p-5 flex gap-4 hover:border-[#0EA5E9] transition-colors">
+    <div className="bg-white border border-slate-200 p-4 sm:p-5 flex gap-3 sm:gap-4 hover:border-[#0EA5E9] transition-colors">
       {/* Avatar */}
       <div className="shrink-0">
         {dentista.avatar ? (
           <Image
             src={dentista.avatar}
             alt={dentista.clinicName}
-            width={72}
-            height={72}
-            className="w-[72px] h-[72px] object-cover rounded-full"
+            width={64}
+            height={64}
+            className="w-14 h-14 sm:w-[72px] sm:h-[72px] object-cover rounded-full"
           />
         ) : (
-          <div className="w-[72px] h-[72px] bg-slate-100 rounded-full flex items-center justify-center">
-            <svg className="w-8 h-8 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="w-14 h-14 sm:w-[72px] sm:h-[72px] bg-slate-100 rounded-full flex items-center justify-center">
+            <svg className="w-7 h-7 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
           </div>
@@ -78,7 +78,7 @@ function CardDentista({ dentista }: { dentista: DentistaEnLista }) {
 
       {/* Contenido */}
       <div className="flex-1 min-w-0">
-        <div className="flex items-start justify-between gap-2">
+        <div className="flex items-start justify-between gap-2 flex-wrap sm:flex-nowrap">
           <div className="min-w-0">
             <div className="flex items-center gap-2 flex-wrap">
               <h2 className="font-bold text-[#0F172A] text-base">
@@ -114,7 +114,7 @@ function CardDentista({ dentista }: { dentista: DentistaEnLista }) {
           </div>
 
           {/* Rating */}
-          <div className="shrink-0 text-right">
+          <div className="shrink-0 text-right w-full sm:w-auto">
             <Estrellas rating={ratingMedio} />
             <p className="text-xs text-slate-400 mt-0.5">
               {ratingMedio > 0 ? (
@@ -216,10 +216,10 @@ export default async function PaginaDentistas({ searchParams }: PropsPagina) {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 py-8">
-        <div className="flex gap-8">
+      <div className="max-w-6xl mx-auto px-4 py-6">
+        <div className="flex flex-col lg:flex-row gap-6">
           {/* Sidebar filtros */}
-          <aside className="w-64 shrink-0">
+          <aside className="w-full lg:w-64 lg:shrink-0">
             <DentistasFiltros
               especialidades={todasEspecialidades.map((e) => e.name)}
               valorInicial={{
